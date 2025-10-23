@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Department;
+use App\Models\Position;
 use Illuminate\Http\Request;
+
 class EmployeeController extends Controller
 {
     /**
@@ -20,7 +23,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        $department = Department::all();
+        $position = Position::all();
+        return view('employee.create', compact('department', 'position'));
     }
 
     /**
@@ -35,8 +40,11 @@ class EmployeeController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'tanggal_masuk' => 'required|date',
+            'departemen_id' => 'required|integer|exists:departments,id',
+            'jabatan_id' => 'required|integer|exists:positions,id',
             'status' => 'required|string|max:50',
         ]);
+        
         Employee::create($request->all());
         return redirect()->route('employees.index');
     }
@@ -56,14 +64,16 @@ class EmployeeController extends Controller
     public function edit(string $id)
     {
         $employee = Employee::find($id);
-        return view('employee.edit', compact('employee'));
+        $department = Department::all();
+        $position = Position::all();
+        return view('employee.edit', compact('employee', 'department', 'position'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {        
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -71,6 +81,8 @@ class EmployeeController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'tanggal_masuk' => 'required|date',
+            'departemen_id' => 'required|integer',
+            'jabatan_id' => 'required|integer',
             'status' => 'required|string|max:50',
         ]);
 
@@ -82,6 +94,8 @@ class EmployeeController extends Controller
             'tanggal_lahir',
             'alamat',
             'tanggal_masuk',
+            'departemen_id',
+            'jabatan_id',
             'status',
         ]));
         

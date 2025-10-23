@@ -20,6 +20,8 @@
                     <th>Tanggal Lahir</th>
                     <th>Alamat</th>
                     <th>Tanggal Masuk</th>
+                    <th>Departemen</th>
+                    <th>Jabatan</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
@@ -33,6 +35,8 @@
                     <td>{{ $employee->tanggal_lahir }}</td>
                     <td>{{ $employee->alamat }}</td>
                     <td>{{ $employee->tanggal_masuk }}</td>
+                    <td>{{ $employee->department->nama_departemen ?? '-' }}</td>
+                    <td>{{ $employee->position->nama_jabatan ?? '-' }}</td>
                     <td>{{ $employee->status }}</td>
                     <td>
                         <a href="{{ route('employees.show', $employee->id) }}">Detail</a> |

@@ -36,6 +36,28 @@
                 <td><input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk', $employee->tanggal_masuk) }}"></td>
             </tr>
             <tr>
+                <td><label for="departemen_id">Departemen</label></td>
+                <td>
+                    <select name="departemen_id" id="departemen_id" class="form-control" required>
+                        <option value="">-- Pilih Departemen --</option>
+                        @foreach($department as $dept)
+                            <option value="{{ $dept->id }}">{{ $dept->nama_departemen }}</option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="jabatan_id">Jabatan</label></td>
+                <td>
+                    <select name="jabatan_id" id="jabatan_id" class="form-control" required>
+                        <option value="">-- Pilih Jabatan --</option>
+                        @foreach($position as $jabatan)
+                            <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td>Status</td>
                 <td>
                     <select name="status">
