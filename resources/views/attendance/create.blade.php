@@ -11,17 +11,31 @@
         @csrf
 
         <label for="karyawan_id">Karyawan:</label><br>
-        <select name="departemen_id" id="departemen_id" class="form-control" required>
-            <option value="">-- Pilih Departemen --</option>
+        <select name="karyawan_id" id="karyawan_id" class="form-control" required>
+            <option value="">-- Pilih Karyawan --</option>
             @foreach($karyawan as $id)
                 <option value="{{ $id->id }}">{{ $id->nama_lengkap }}</option>
             @endforeach
-        </select>
+        </select><br><br>
         
-        <label for="tanggal_absen">Tanggal:</label><br>
-        <input type="date" name="tanggal_absen" id="tanggal_absen"><br><br>
-        <label for="tanggal_absen">Status:</label><br>
-        <input type="date" name="tanggal_absen" id="tanggal_absen"><br><br>
+        <label for="tanggal">Tanggal:</label><br>
+        <input type="date" name="tanggal" id="tanggal"><br><br>
+
+        <label for="waktu_masuk">Waktu Masuk:</label><br>
+        <input type="time" name="waktu_masuk" id="waktu_masuk"><br><br>
+        
+        <label for="waktu_keluar">Waktu Keluar:</label><br>
+        <input type="time" name="waktu_keluar" id="waktu_keluar"><br><br>
+        
+        <label for="status_absensi">Status:</label><br>
+        <select id="status_absensi" name="status_absensi">
+            <option value="hadir">hadir</option>
+            <option value="izin">izin</option>
+            <option value="sakit">sakit</option>
+            <option value="alpha">alpha</option>
+        </select><br><br>
+
+        <button type="submit">Simpan</button>
     </form>
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Attendance;
+use App\Models\Employee;
 
 class AttendanceController extends Controller
 {
@@ -33,7 +34,9 @@ class AttendanceController extends Controller
         $request->validate([
             'karyawan_id' => 'required|integer|exists:employees,id',
             'tanggal' => 'required|date',
-            'status' => 'required|string|max:40'
+            'waktu_masuk' => 'required|date_format:H:i',
+            'waktu_keluar' => 'required|date_format:H:i',
+            'status_absensi' => 'required|string|max:40'
         ]);
 
         Attendance::create($request->all());
