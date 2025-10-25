@@ -14,8 +14,7 @@
             <li><a href="{{ url('/employee') }}">Employee</a></li>
             <li><a href="{{ url('/department') }}">Department</a></li>
             <li><a href="{{ url('/attendance') }}">Attendance</a></li>
-            <li><a href="{{ url('/report') }}">Report</a></li>
-            <li><a href="{{ url('/settings') }}">Settings</a></li>
+            <li><a href="{{ url('/salaries') }}">Salaries</a></li>
             </ul>
         </nav>
     </header>

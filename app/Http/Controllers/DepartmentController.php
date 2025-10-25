@@ -53,7 +53,8 @@ class DepartmentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $department = Department::find($id);
+        return view('department.edit', compact('department'));
     }
 
     /**
@@ -61,7 +62,15 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama_departemen' => 'required|string|max:255'
+        ]);
+        $department = Department::findOrfail($id);
+        $department->update($request->only([
+            'nama_departemen'
+        ]));
+
+        return redirect()->route('department.index');
     }
 
     /**

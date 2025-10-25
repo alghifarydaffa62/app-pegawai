@@ -13,6 +13,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nama Departemen</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,9 @@
                 <tr>
                     <td>{{ $dept->id }}</td>
                     <td>{{ $dept->nama_departemen }}</td>
+                    <td>
+                        <a href="{{ route('department.edit', $dept->id) }}">Edit</a> |
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
