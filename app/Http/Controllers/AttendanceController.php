@@ -48,7 +48,8 @@ class AttendanceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $attendance = Attendance::find($id);
+        return view('attendance.show', compact('attendance'));
     }
 
     /**
@@ -72,6 +73,8 @@ class AttendanceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $attendance = Attendance::find($id);
+        $attendance->delete();
+        return redirect()->route('attendance.index');
     }
 }

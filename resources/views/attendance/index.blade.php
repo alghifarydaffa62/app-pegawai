@@ -17,6 +17,7 @@
                     <th>Waktu Masuk</th>
                     <th>Waktu Keluar</th>
                     <th>Status Absensi</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,9 +26,17 @@
                     <td>{{ $absen->id }}</td>
                     <td>{{ $absen->employee->nama_lengkap }}</td>
                     <td>{{ $absen->tanggal }}</td>
-                    <th>{{ $absen->waktu_masuk }}</th>
-                    <th>{{ $absen->waktu_keluar }}</th>
-                    <th>{{ $absen->status_absensi }}</th>
+                    <td>{{ $absen->waktu_masuk }}</td>
+                    <td>{{ $absen->waktu_keluar }}</td>
+                    <td>{{ $absen->status_absensi }}</td>
+                    <td>
+                        <a href="{{ route('attendance.show', $absen->id) }}">Detail</a> |
+                        <form action="{{ route('attendance.destroy', $absen->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('Yakin ingin menghapus?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

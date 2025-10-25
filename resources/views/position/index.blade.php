@@ -15,6 +15,7 @@
                     <th>ID</th>
                     <th>Nama Jabatan</th>
                     <th>Gaji Pokok</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,13 @@
                     <td>{{ $jabatan->id }}</td>
                     <td>{{ $jabatan->nama_jabatan }}</td>
                     <td>{{ $jabatan->gaji_pokok }}</td>
+                    <td>
+                        <form action="{{ route('position.destroy', $jabatan->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('Yakin ingin menghapus?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
