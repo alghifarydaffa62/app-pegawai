@@ -31,6 +31,7 @@
                     <td>{{ $absen->status_absensi }}</td>
                     <td>
                         <a href="{{ route('attendance.show', $absen->id) }}">Detail</a> |
+                        <a href="{{ route('attendance.edit', $absen->id) }}">Edit</a> |
                         <form action="{{ route('attendance.destroy', $absen->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

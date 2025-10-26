@@ -25,6 +25,8 @@
                     <td>{{ $jabatan->nama_jabatan }}</td>
                     <td>{{ $jabatan->gaji_pokok }}</td>
                     <td>
+                        <a href="{{ route('position.show', $jabatan->id) }}">Detail</a> |
+                        <a href="{{ route('position.edit', $jabatan->id) }}">Edit</a> |
                         <form action="{{ route('position.destroy', $jabatan->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

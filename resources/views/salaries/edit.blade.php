@@ -26,7 +26,6 @@
                 <th>Nama Pegawai</th>
                 <td>
                     <input type="text" value="{{ $salaries->employee->nama_lengkap }}" readonly>
-                    <!-- kirim juga karyawan_id agar validasi lewat -->
                     <input type="hidden" name="karyawan_id" value="{{ $salaries->karyawan_id }}">
                 </td>
             </tr>

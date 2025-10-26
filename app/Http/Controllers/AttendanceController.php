@@ -57,7 +57,8 @@ class AttendanceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $attendance = Attendance::find($id);
+        return view('attendance.edit', compact('attendance'));
     }
 
     /**
@@ -65,7 +66,23 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'karyawan_id' => 'required|integer|exists:employees,id',
+            'tanggal' => 'required|date',
+            'waktu_masuk' => 'required|date_format:H:i:s',
+            'waktu_keluar' => 'required|date_format:H:i:s',
+            'status_absensi' => 'required|string|max:40'
+        ]);
+        $attendance = Attendance::find($id);
+        $attendance->update($request->only([
+            'karyawan_id',
+            'tanggal',
+            'waktu_masuk', 
+            'waktu_keluar', 
+            'status_absensi'
+        ]));
+
+        return redirect()->route('attendance.index');
     }
 
     /**

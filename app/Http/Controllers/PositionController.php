@@ -47,7 +47,8 @@ class PositionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $position = Position::find($id);
+        return view('position.show', compact('position'));
     }
 
     /**
@@ -55,7 +56,8 @@ class PositionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $position = Position::find($id);
+        return view('position.edit', compact('position'));
     }
 
     /**
@@ -63,7 +65,16 @@ class PositionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "nama_jabatan" => 'required|string|max:255',
+            "gaji_pokok" => 'required|numeric|min:0'
+        ]);
+        $position = Position::find($id);
+        $position->update($request->only([
+            "nama_jabatan",
+            "gaji_pokok"
+        ]));
+        return redirect()->route('position.index');
     }
 
     /**
