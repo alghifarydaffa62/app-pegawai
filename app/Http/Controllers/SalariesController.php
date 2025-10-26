@@ -67,7 +67,8 @@ class SalariesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $salaries = Salaries::find($id);
+        return view('salaries.edit', compact('salaries'));
     }
 
     /**
@@ -75,7 +76,32 @@ class SalariesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'karyawan_id' => 'required|integer|exists:employees,id',
+            'bulan' => 'required|date_format:Y-m',
+            'tunjangan' => 'required|numeric|min:0',
+            'potongan' => 'required|numeric|min:0',
+        ]);
+
+        $salaries = Salaries::findOrFail($id);
+
+        $employee = Employee::with('position')->find($request->karyawan_id);
+        $gaji_pokok = $employee->position->gaji_pokok ?? 0;
+
+        $total_gaji = $gaji_pokok + $request->tunjangan - $request->potongan;
+
+        $salaries->update([
+            'karyawan_id' => $request->karyawan_id,
+            'bulan' => $request->bulan,
+            'gaji_pokok' => $gaji_pokok,
+            'tunjangan' => $request->tunjangan,
+            'potongan' => $request->potongan,
+            'total_gaji' => $total_gaji,
+        ]);
+
+        return redirect()
+            ->route('salaries.index')
+            ->with('success', 'Data gaji berhasil diperbarui.');
     }
 
     /**

@@ -18,6 +18,10 @@
             <td>{{ $salaries->bulan }}</td>
         </tr>
         <tr>
+            <th>Gaji Pokok</th>
+            <td>{{ $salaries->gaji_pokok }}</td>
+        </tr>
+        <tr>
             <th>Tunjangan Pegawai</th>
             <td>{{ $salaries->tunjangan }}</td>
         </tr>

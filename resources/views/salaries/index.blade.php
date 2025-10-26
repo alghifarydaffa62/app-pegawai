@@ -17,6 +17,7 @@
                 <th>Tunjangan</th>
                 <th>Potongan</th>
                 <th>Total Gaji</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,15 @@
                 <td>{{ $gaji->tunjangan }}</td>
                 <td>{{ $gaji->potongan }}</td>
                 <td>{{ $gaji->total_gaji }}</td>
+                <td>
+                    <a href="{{ route('salaries.show', $gaji->id) }}">Detail</a> |
+                    <a href="{{ route('salaries.edit', $gaji->id) }}">edit</a> |
+                    <form action="{{ route('salaries.destroy', $gaji->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Yakin ingin menghapus?')">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
