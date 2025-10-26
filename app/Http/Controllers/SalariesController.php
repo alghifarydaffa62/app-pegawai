@@ -36,7 +36,7 @@ class SalariesController extends Controller
             'potongan' => 'required|integer|min:0',
         ]);
 
-        $employee = \App\Models\Employee::with('position')->find($request->karyawan_id);
+        $employee = Employee::with('position')->find($request->karyawan_id);
         $gaji_pokok = $employee->position->gaji_pokok ?? 0;
 
         $total_gaji = $gaji_pokok + $request->tunjangan - $request->potongan;
@@ -58,7 +58,8 @@ class SalariesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $salaries = Salaries::find($id);
+        return view('salaries.show', compact('salaries'));
     }
 
     /**
@@ -82,6 +83,8 @@ class SalariesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $salaries = Salaries::find($id);
+        $salaries->delete();
+        return redirect()->route('salaries.index');
     }
 }
