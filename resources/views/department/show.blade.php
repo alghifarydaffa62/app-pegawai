@@ -3,55 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Jabatan</title>
+    <title>Data Departement</title>
 </head>
-<body>
+<body class="h-screen">
     @extends('master')
-    @section('title', 'Detail Jabatan')
+    @section('title', 'Detail Departemen')
     @section('content')
 
     <div class="max-w-3xl mx-auto">
         <div class="overflow-hidden bg-white rounded-lg shadow-xl">
             <!-- Header -->
-            <div class="px-8 py-6 bg-gradient-to-r from-sky-600 to-cyan-600">
+            <div class="px-8 py-6 bg-gradient-to-r from-indigo-600 to-purple-600">
                 <div class="flex items-center">
                     <div class="flex items-center justify-center w-16 h-16 mr-4 bg-white rounded-full">
-                        <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M12 11c0-1.105.895-2 2-2s2 .895 2 2v1h1a2 2 0 010 4h-1v2a2 2 0 01-4 0v-2H9a2 2 0 010-4h3v-1z" />
+                                  d="M4 7h16M4 12h16m-7 5h7" />
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-3xl font-bold text-white">Detail Jabatan</h1>
-                        <p class="mt-1 text-sky-100">Informasi lengkap mengenai jabatan karyawan</p>
+                        <h1 class="text-3xl font-bold text-white">Detail Departemen</h1>
+                        <p class="mt-1 text-indigo-100">Informasi lengkap mengenai departemen</p>
                     </div>
                 </div>
             </div>
 
             <!-- Content -->
             <div class="p-8 space-y-6">
-                <!-- Nama Jabatan -->
+                <!-- ID Departemen -->
                 <div class="p-4 rounded-lg bg-gray-50">
-                    <p class="mb-2 text-sm font-semibold text-gray-600">Nama Jabatan</p>
-                    <p class="text-xl font-bold text-gray-800">{{ $position->nama_jabatan }}</p>
+                    <p class="mb-2 text-sm font-semibold text-gray-600">ID Departemen</p>
+                    <p class="text-xl font-bold text-gray-800">{{ $department->id }}</p>
                 </div>
 
-                <!-- Gaji Pokok -->
+                <!-- Nama Departemen -->
                 <div class="p-4 rounded-lg bg-gray-50">
-                    <p class="mb-2 text-sm font-semibold text-gray-600">Gaji Pokok</p>
-                    <p class="text-2xl font-bold text-emerald-700">
-                        Rp {{ number_format($position->gaji_pokok, 0, ',', '.') }}
-                    </p>
+                    <p class="mb-2 text-sm font-semibold text-gray-600">Nama Departemen</p>
+                    <p class="text-xl font-bold text-gray-800">{{ $department->nama_departemen }}</p>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="flex justify-end pt-6 mt-8 space-x-4 border-t">
-                    <a href="{{ route('position.index') }}" 
+                    <a href="{{ route('department.index') }}" 
                        class="px-6 py-3 font-semibold text-gray-700 transition border border-gray-300 rounded-lg hover:bg-gray-50">
                         Kembali
                     </a>
-                    <a href="{{ route('position.edit', $position->id) }}" 
-                       class="flex items-center px-6 py-3 font-semibold text-white transition duration-300 rounded-lg shadow-md bg-sky-600 hover:bg-sky-700">
+                    <a href="{{ route('department.edit', $department->id) }}" 
+                       class="flex items-center px-6 py-3 font-semibold text-white transition duration-300 bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />

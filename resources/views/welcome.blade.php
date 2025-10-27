@@ -19,7 +19,7 @@
         </style>
     @endif
 </head>
-<body class="flex items-center justify-center my-5 font-sans antialiased">
+<body class="flex items-center justify-center h-screen font-sans antialiased">
 
 <div class="w-full max-w-6xl px-6">
     <!-- Header -->
@@ -54,7 +54,7 @@
         </a>
 
         <!-- Departments -->
-        <a href="{{ url('/departments') }}"
+        <a href="{{ url('/department') }}"
             class="flex flex-col items-center justify-center p-8 transition-all duration-300 bg-white shadow-lg rounded-2xl hover:scale-105 hover:shadow-xl">
             <div class="flex items-center justify-center w-12 h-12 mb-3 bg-yellow-100 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -66,7 +66,7 @@
         </a>
 
         <!-- Positions -->
-        <a href="{{ url('/positions') }}"
+        <a href="{{ url('/position') }}"
             class="flex flex-col items-center justify-center p-8 transition-all duration-300 bg-white shadow-lg rounded-2xl hover:scale-105 hover:shadow-xl">
             <div class="flex items-center justify-center w-12 h-12 mb-3 bg-purple-100 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -53,6 +53,9 @@
                         </td>
                         <td class="px-4 py-4 text-center">
                             <div class="flex justify-center space-x-2">
+                                <a href="{{ route('department.show', $dept->id) }}" class="px-3 py-1 text-xs font-semibold text-white transition bg-yellow-500 rounded hover:bg-yellow-600">
+                                    Detail
+                                </a>
                                 <a href="{{ route('department.edit', $dept->id) }}" class="px-3 py-1 text-xs font-semibold text-white transition bg-yellow-500 rounded hover:bg-yellow-600">
                                     Edit
                                 </a>

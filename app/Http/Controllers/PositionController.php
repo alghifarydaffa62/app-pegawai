@@ -5,28 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Position;
 
-class PositionController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
+class PositionController extends Controller {
+
     public function index()
     {
         $position = Position::latest()->paginate(5);
         return view('position.index', compact('position'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('position.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -42,27 +33,18 @@ class PositionController extends Controller
         return redirect()->route('position.index')->with('success', 'Jabatan berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $position = Position::find($id);
         return view('position.show', compact('position'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $position = Position::find($id);
         return view('position.edit', compact('position'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -77,9 +59,6 @@ class PositionController extends Controller
         return redirect()->route('position.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $position = Position::find($id);
