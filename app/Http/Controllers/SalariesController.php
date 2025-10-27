@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Salaries;
 use App\Models\Employee;
 
-class SalariesController extends Controller
-{
+class SalariesController extends Controller {
     
     public function index()
     {
@@ -15,18 +14,12 @@ class SalariesController extends Controller
         return view('salaries.index', compact('salaries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $karyawan = Employee::all();
         return view('salaries.create', compact('karyawan'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -53,27 +46,18 @@ class SalariesController extends Controller
         return redirect()->route('salaries.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $salaries = Salaries::find($id);
         return view('salaries.show', compact('salaries'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $salaries = Salaries::find($id);
         return view('salaries.edit', compact('salaries'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -104,9 +88,6 @@ class SalariesController extends Controller
             ->with('success', 'Data gaji berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $salaries = Salaries::find($id);
