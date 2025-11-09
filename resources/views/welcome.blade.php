@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Employee Management System</title>
+    <link rel="stylesheet" href="../css/app.css">
 
     <style>
         body {
@@ -29,6 +30,18 @@
     </div>
 
     <div class="grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
+         <a href="{{ url('/admin') }}"
+            class="flex flex-col items-center justify-center p-8 transition-all duration-300 bg-white shadow-lg rounded-2xl hover:scale-105 hover:shadow-xl">
+            <div class="flex items-center justify-center w-12 h-12 mb-3 bg-indigo-100 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M11 17a4 4 0 01-8 0m8 0a4 4 0 018 0m-8 0V5a4 4 0 018 0v12m-8 0a4 4 0 018 0" />
+                </svg>
+            </div>
+            <span class="text-lg font-semibold text-gray-700">Admin</span>
+            <span class="text-sm text-gray-600">Manajemen Akun</span>
+        </a>
+        
         <!-- Employees -->
         <a href="{{ url('/employees') }}"
             class="flex flex-col items-center justify-center p-8 transition-all duration-300 bg-white shadow-lg rounded-2xl hover:scale-105 hover:shadow-xl">
@@ -89,6 +102,14 @@
             <span class="text-sm text-gray-600">Kehadiran</span>
         </a>
     </div>
+    
+    <form action="{{ route('logout') }}" method="POST" class="mt-6 text-center">
+        @csrf
+        <button type="submit" 
+            class="px-4 py-2 text-white transition bg-red-500 rounded-lg hover:bg-red-600">
+            Logout
+        </button>
+    </form>
 
     <!-- Footer -->
     <footer class="mt-12 text-sm text-center text-white">
