@@ -56,7 +56,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <main class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8 min-h-[75vh]">
         @yield('content')
     </main>
 
